@@ -37,7 +37,7 @@ public class TestExercise2 {
     String result = list.toString();
     String expected = "{a,b,d,c}";
 
-    assertEquals(expected, result, "La salida esperada es: " + expected + " pero retorno: " + expected);
+    assertEquals(expected, result, "La salida esperada es: " + expected + " pero retorno: " + result);
   }
 
   @Test
