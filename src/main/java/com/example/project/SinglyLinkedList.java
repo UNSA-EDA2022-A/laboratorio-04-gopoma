@@ -168,15 +168,9 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
     public static void main(final String[] args) {
 
-<<<<<<< HEAD
-        // testExercicio1();
-        testExercicio2();
-        // testExercicio3();       
-=======
         testExercicio1();
         testExercicio2();
         testExercicio3();       
->>>>>>> c7cffdfb27572f472d338ceffb1d63aa66ac00bc
 
     }
 
