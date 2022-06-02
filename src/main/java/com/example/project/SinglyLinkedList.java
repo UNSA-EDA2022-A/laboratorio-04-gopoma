@@ -1,6 +1,6 @@
 package com.example.project;
 
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T extends Comparable<T>> {
     private Node<T> first; // Primero nodo de la lista
     private int size; // Tamano de la lista
 
@@ -96,28 +96,81 @@ public class SinglyLinkedList<T> {
         return str;
     }
 
-    // NUEVOS METODOS
+    public boolean contains(T value) {
+        Node<T> tmp = first;
+        while(tmp != null) {
+            if(tmp.getValue().compareTo(value) == 0)
+                return true;
+            tmp = tmp.getNext();
+        }
+        return false;
+    }
 
+    // NUEVOS METODOS
     // Elimina aquellos nodos de la lista que esten duplicados
     public void deleteDuplicates() {
-
+        SinglyLinkedList<T> uniqueValues = new SinglyLinkedList<T>();
+        Node<T> tmp = first;
+        int counter = 0;
+        while(tmp != null) {
+            final T current = tmp.getValue();
+            tmp = tmp.getNext();
+            if(!uniqueValues.contains(current)) {
+                uniqueValues.addLast(current);
+                counter++;
+            }
+            else {this.getDeleteNthResponse(counter);}
+        }
     }
 
     // Inserta un nuevo nodo en una posicion especifica de la lista
+    public static boolean inRange(int position, int start, int end) {
+        return start <= position && position <= end;
+    }
     public void insertNth(T data, int position) {
-
+        String response = getInsertNthResponse(data, position) ? this.toString() : "Fuera de rango.";
+        System.out.println(response);
+    }
+    public boolean getInsertNthResponse(T data, int position) {
+        if(!inRange(position, 0, size())) {return false;}
+        if(position == 0) {this.addFirst(data);}
+        else {
+            Node<T> beforeTarget = first;
+            for(int i = 0; i < position - 1; i++)
+                beforeTarget = beforeTarget.getNext();
+            Node<T> tmp = beforeTarget.getNext();
+            Node<T> newNode = new Node<T>(data, tmp);        
+            beforeTarget.setNext(newNode);
+        }
+        size++;
+        return true;
     }
 
     // Elimina el nodo de una posicion especifica de la lista
     public void deleteNth(int position) {
-
+        String response = getDeleteNthResponse(position) ? this.toString() : "Fuera de rango.";
+        System.out.println(response);
+    }
+    public boolean getDeleteNthResponse(int position) {
+        if(!inRange(position, 0, size() - 1)) {return false;}
+        if(position == 0) {
+            this.removeFirst();
+        } else {
+            Node<T> beforeTarget = first;
+            for(int i = 0; i < position - 1; i++)
+                beforeTarget = beforeTarget.getNext();
+            Node<T> tmp = beforeTarget.getNext().getNext();
+            beforeTarget.setNext(tmp);
+        }
+        size--;
+        return true;
     }
 
     public static void main(final String[] args) {
 
         // testExercicio1();
-        // testExercicio2();
-        testExercicio3();       
+        testExercicio2();
+        // testExercicio3();       
 
     }
 
@@ -148,9 +201,9 @@ public class SinglyLinkedList<T> {
 
         System.out.println(list);
 
-        list.insertNth('c', 2);
+        list.insertNth('c', 4);
 
-        System.out.println(list);
+        // System.out.println(list);
     }
 
     public static void testExercicio3(){
@@ -165,7 +218,7 @@ public class SinglyLinkedList<T> {
 
         list.deleteNth(2);
 
-        System.out.println(list);
+        // System.out.println(list);
     }
 
 }

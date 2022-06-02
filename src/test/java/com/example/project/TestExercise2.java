@@ -35,7 +35,7 @@ public class TestExercise2 {
     list.insertNth('c', 4);
 
     String result = list.toString();
-    String expected = "{a,b,d,c}";
+    String expected = "Fuera de rango.";
 
     assertEquals(expected, result, "La salida esperada es: " + expected + " pero retorno: " + expected);
   }
