@@ -32,11 +32,11 @@ public class TestExercise2 {
     list.addLast('b');
     list.addLast('d');
 
-    list.insertNth('c', 4);
+    list.insertNth('c', 3);
 
     String result = list.toString();
     String expected = "{a,b,d,c}";
-    
+
     assertEquals(expected, result, "La salida esperada es: " + expected + " pero retorno: " + expected);
   }
 
