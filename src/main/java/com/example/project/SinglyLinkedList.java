@@ -201,7 +201,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
         System.out.println(list);
 
-        list.insertNth('c', 4);
+        list.insertNth('c', 2);
 
         // Implemented a message callback
         // System.out.println(list);
