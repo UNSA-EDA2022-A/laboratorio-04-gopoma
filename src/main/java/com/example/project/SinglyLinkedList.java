@@ -203,6 +203,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
         list.insertNth('c', 4);
 
+        // Implemented a message callback
         // System.out.println(list);
     }
 
@@ -218,6 +219,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
         list.deleteNth(2);
 
+        // Implemented a message callback
         // System.out.println(list);
     }
 
